@@ -1,3 +1,4 @@
+# _*_ encoding:utf-8 _*_
 """
 Django settings for jayq_Edu_Web project.
 
@@ -37,7 +38,10 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    "users"
 ]
+# 重载方法 app名称+ class
+AUTH_USER_MODEL = "users.UserProfile"
 
 MIDDLEWARE_CLASSES = [
     'django.middleware.security.SecurityMiddleware',
