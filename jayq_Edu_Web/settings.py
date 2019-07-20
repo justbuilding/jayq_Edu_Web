@@ -17,7 +17,8 @@ import sys
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # 新建apps并把operation等移到apps中,需要告诉代码运行器路径
-sys.path.insert(0,os.path.join(BASE_DIR, 'apps'))
+sys.path.insert(0, os.path.join(BASE_DIR, 'apps'))
+sys.path.insert(0, os.path.join(BASE_DIR, 'extra_apps'))
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.9/howto/deployment/checklist/
@@ -43,7 +44,9 @@ INSTALLED_APPS = [
     "users",
     "courses",
     "organization",
-    "operation"
+    "operation",
+    "xadmin",
+    "crispy_forms"
 ]
 # 重载方法 app名称+ class
 AUTH_USER_MODEL = "users.UserProfile"
