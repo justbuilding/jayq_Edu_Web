@@ -90,7 +90,10 @@ DATABASES = {
         'NAME': "eduweb",
         "USER": "root",
         "PASSWORD": "root",
-        "HOST": "127.0.0.1"
+        "HOST": "127.0.0.1",
+        'OPTIONS': {
+            "init_command": "SET foreign_key_checks = 0;",
+        }
     }
 }
 
