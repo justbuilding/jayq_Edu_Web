@@ -23,6 +23,9 @@ class Course(models.Model):
         verbose_name = u"课程"
         verbose_name_plural = verbose_name
 
+    def __unicode__(self):
+        return self.name
+
 
 # 定义课程与章节的关系
 class Lesson(models.Model):

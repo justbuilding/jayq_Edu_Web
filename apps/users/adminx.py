@@ -3,7 +3,7 @@ __author__ = 'JackieQ'
 __date__ = '2019/7/21 9:27'
 import xadmin
 
-from .models import EmailVerifyRecord
+from .models import EmailVerifyRecord,Banner
 
 
 class EmailVerifyRecordAdmin(object):
@@ -15,4 +15,17 @@ class EmailVerifyRecordAdmin(object):
     # 想通过时间查找，需要增加过滤器
     list_filter = ['code', 'email', 'send_type', 'send_time']
 
+
+class BannerAdmin(object):
+    # 元组记得后面有逗号 list_display = (code,)
+    # 在邮箱验证码显示相应列
+    list_display = ['title', 'image', 'url', 'index', 'add_time']
+    # 查,在书签旁增加搜索栏
+    search_fields = ['title', 'image', 'url', 'index']
+    # 想通过时间查找，需要增加过滤器
+    list_filter = ['title', 'image', 'url', 'index', 'add_time']
+
+
 xadmin.site.register(EmailVerifyRecord, EmailVerifyRecordAdmin)
+xadmin.site.register(Banner, BannerAdmin)
+
