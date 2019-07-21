@@ -31,13 +31,19 @@ class UserProfile(AbstractUser):
 class EmailVerifyRecord(models.Model):
     code = models.CharField(max_length=20, verbose_name=u"验证码")
     email = models.EmailField(max_length=50, verbose_name=u"邮箱")
-    send_type = models.CharField(choices=(("register", u"注册"), ("forget", u"找回密码")), max_length=30)
+    send_type = models.CharField(verbose_name=u"验证码类型", choices=(("register", u"注册"), ("forget", u"找回密码")), max_length=30)
     # 注意把datetime.now()的括号去掉，不然他会根据EmailVerifyRecord编译生成时间，而不是根据class实例化生成时间
-    send_time = models.DateTimeField(default=datetime.now)
+    send_time = models.DateTimeField(verbose_name=u"发送时间", default=datetime.now)
 
     class Meta:
+        # verbose_name是显示在xadmin的名称
         verbose_name = u"邮箱验证码"
+        # verbose_name_plural指定了复数形式，不然网页会自动显示：邮箱验证码s
         verbose_name_plural = verbose_name
+
+    # 使邮箱验证码显示出列表每行名称 	,格式为  admin222e(asdf@dasf.com) 而不是显示EmailVerifyRecord
+    def __unicode__(self):
+        return '{0}({1})'.format(self.code, self.email)
 
 
 # 轮播图
