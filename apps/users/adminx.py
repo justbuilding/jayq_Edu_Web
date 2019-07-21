@@ -2,8 +2,23 @@
 __author__ = 'JackieQ'
 __date__ = '2019/7/21 9:27'
 import xadmin
+from xadmin import views
 
 from .models import EmailVerifyRecord,Banner
+
+
+# 设置开启主题功能
+class BaseSetting(object):
+    enable_themes = True
+    use_bootswatch = True
+
+
+# 修改标题和底部栏
+class GlobalSettings(object):
+    site_title = "慕课后台管理系统"
+    site_footer = '慕课在线网'
+    # 设置自动收起详细app栏
+    menu_style = "accordion"
 
 
 class EmailVerifyRecordAdmin(object):
@@ -28,4 +43,6 @@ class BannerAdmin(object):
 
 xadmin.site.register(EmailVerifyRecord, EmailVerifyRecordAdmin)
 xadmin.site.register(Banner, BannerAdmin)
+xadmin.site.register(views.BaseAdminView, BaseSetting)
+xadmin.site.register(views.CommAdminView, GlobalSettings)
 
